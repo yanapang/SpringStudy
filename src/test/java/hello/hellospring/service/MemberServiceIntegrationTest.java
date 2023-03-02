@@ -3,31 +3,22 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+@SpringBootTest
+@Transactional
+class MemberServiceIntegrationTest {
 
-class MemberServiceTest {
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
-    MemberService memberService;
-    MemberRepository memberRepository;
-
-    @BeforeEach
-    public void beforeEach(){
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-        //DI (Dependency Injection)를 이용해 동일한 DB를 활용 하여 동작 및 테스트
-    }
-
-//    @AfterEach
-//    public void afterEach(){
-//        memberRepository.clearStore();
-//    }
     @Test
     void join() {
         //given
@@ -67,11 +58,4 @@ class MemberServiceTest {
         //then
     }
 
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
-    }
 }

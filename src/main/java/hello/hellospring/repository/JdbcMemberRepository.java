@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class JdbcMemberRepository implements MemberRepository{
+public class JdbcMemberRepository implements MemberRepository {
 
     private final DataSource dataSource;
 

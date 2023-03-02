@@ -33,7 +33,7 @@ public class MemberService {
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName()).ifPresent(m->{
-            throw new IllegalStateException("Member already exist");
+            throw new IllegalStateException("Member Already Exist.");
         });
     }
 
